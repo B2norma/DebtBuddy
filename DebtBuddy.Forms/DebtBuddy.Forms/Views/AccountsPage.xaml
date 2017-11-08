@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   x:Class="DebtBuddy.Forms.Views.AccountsPage">
+    <Grid>
+        <ListView ItemsSource="{Binding Accounts}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout BackgroundColor="#eee" Orientation="Vertical">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Name}" Grid.Row="0" Grid.Column="0" />
+                                <Label Text="{Binding Balance, Converter={StaticResource doubleToBalanceConverter}}" Grid.Row="0" Grid.Column="1" />
+                                <Label Text="{Binding InterestRate, Converter={StaticResource doubleToInterestRateConverter}}" Grid.Row="0" Grid.Column="2" />
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Add Account" Command="{Binding ShowCreateAccountViewModel}" HorizontalOptions="CenterAndExpand" VerticalOptions="End" />
+    </Grid>
+</ContentPage>
