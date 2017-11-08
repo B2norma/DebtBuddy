@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace DebtBuddy.Forms.Services.IServices
+namespace DebtBuddy.Forms.Interfaces.Services
 {
     public interface INavigationService
     {

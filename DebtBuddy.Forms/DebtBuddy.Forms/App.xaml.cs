@@ -1,5 +1,5 @@
-﻿using DebtBuddy.Forms.Services;
-using DebtBuddy.Forms.Services.IServices;
+﻿using DebtBuddy.Forms.Interfaces;
+using DebtBuddy.Forms.Repositories;
 using DebtBuddy.Forms.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -28,6 +28,20 @@ namespace DebtBuddy.Forms
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        static AccountRepository database;
+
+        public static AccountRepository Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new AccountRepository(DependencyService.Get<IFileHelper>().GetLocalFilePath("Account.db3"));
+                }
+                return database;
+            }
         }
     }
 }

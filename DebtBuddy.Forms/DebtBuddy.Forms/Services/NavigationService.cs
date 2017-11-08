@@ -1,4 +1,4 @@
-﻿using DebtBuddy.Forms.Services.IServices;
+﻿using DebtBuddy.Forms.Interfaces.Services;
 using DebtBuddy.Forms.Views;
 using System;
 using System.Collections.Generic;

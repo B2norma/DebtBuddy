@@ -7,7 +7,7 @@
             <Entry Placeholder="Account Name" Text="{Binding Name, Mode=OneWayToSource}" />
             <Entry Placeholder="Balance" Text="{Binding Balance, Mode=OneWayToSource}" />
             <Entry Placeholder="Interest Rate" Text="{Binding InterestRate, Mode=OneWayToSource}" />
-            <Button Text="Submit" />
+            <Button Text="Submit" Command="{Binding AddAccountToDatabaseCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

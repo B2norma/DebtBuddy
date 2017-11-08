@@ -1,29 +1,28 @@
 ﻿using DebtBuddy.Forms.Models;
 using DebtBuddy.Forms.Services;
-using DebtBuddy.Forms.Services.IServices;
+using DebtBuddy.Forms.Interfaces.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Xamarin.Forms;
+using DebtBuddy.Forms.Extensions;
 
 [assembly: Dependency(typeof(NavigationService))]
+[assembly: Dependency(typeof(AccountDataService))]
 namespace DebtBuddy.Forms.ViewModels
 {
     public class AccountsViewModel : INotifyPropertyChanged
     {
         private INavigationService _navigationService;
+        private IAccountDataService _accountDataService;
 
-        ObservableCollection<Account> _accounts = new ObservableCollection<Account>()
-        {
-            new Account{Name = "Discover", Balance = 5000, InterestRate = 99.99},
-            new Account{Name = "Wells Fargo", Balance = 10000, InterestRate = 9.99},
-            new Account{Name = "Best Buy", Balance = 123456.25, InterestRate = 00.09}
-        };
+        ObservableCollection<Account> _accounts;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public AccountsViewModel()
         {
             _navigationService = DependencyService.Get<INavigationService>();
+            _accountDataService = DependencyService.Get<IAccountDataService>();
 
             ShowCreateAccountViewModel = new Command(async() => await _navigationService.NavigateToCreateAccount());
         }
@@ -38,6 +37,11 @@ namespace DebtBuddy.Forms.ViewModels
                 _accounts = value;
                 OnPropertyChanged("Accounts");
             }
+        }
+
+        public async void LoadAccountsFromDatabase()
+        {
+            Accounts = (await _accountDataService.GetAllAccounts()).ToObservableCollection();
         }
 
         protected void OnPropertyChanged(string propertyName)

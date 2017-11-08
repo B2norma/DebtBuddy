@@ -96,6 +96,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FileHelper.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -152,15 +153,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DebtBuddy.Forms\DebtBuddy.Forms.csproj">
-      <Project>{2a4b502c-1cd3-4f14-aa30-c43c1d44c187}</Project>
-      <Name>DebtBuddy.Forms</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <SDKReference Include="WindowsMobile, Version=10.0.15063.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DebtBuddy.Forms\DebtBuddy.Forms.csproj">
+      <Project>{2feb961f-c23c-4b84-960a-2c086d8cd771}</Project>
+      <Name>DebtBuddy.Forms</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
