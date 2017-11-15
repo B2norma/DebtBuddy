@@ -38,7 +38,7 @@ namespace DebtBuddy.Forms
             {
                 if (database == null)
                 {
-                    database = new AccountRepository(DependencyService.Get<IFileHelper>().GetLocalFilePath("Account.db3"));
+                    database = new AccountRepository(DependencyService.Get<IFileHelper>().GetLocalFilePath("Account.db"));
                 }
                 return database;
             }

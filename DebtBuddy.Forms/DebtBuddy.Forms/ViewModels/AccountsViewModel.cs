@@ -25,9 +25,12 @@ namespace DebtBuddy.Forms.ViewModels
             _accountDataService = DependencyService.Get<IAccountDataService>();
 
             ShowCreateAccountViewModel = new Command(async() => await _navigationService.NavigateToCreateAccount());
+            ShowAccountDetailViewModel = new Command(async() => await _navigationService.NavigateToAccountDetail(_selectedItem));
         }
 
         public Command ShowCreateAccountViewModel { get; }
+
+        public Command ShowAccountDetailViewModel { get; }
 
         public ObservableCollection<Account> Accounts
         {
@@ -39,6 +42,23 @@ namespace DebtBuddy.Forms.ViewModels
             }
         }
 
+        private Account _selectedItem;
+        public Account SelectedItem
+        {
+            get
+            {
+                return _selectedItem;
+            }
+            set
+            {
+                if (_selectedItem != value)
+                {
+                    _selectedItem = value;
+                    OnPropertyChanged("SelectedItem");
+                }
+            }
+        }
+
         public async void LoadAccountsFromDatabase()
         {
             Accounts = (await _accountDataService.GetAllAccounts()).ToObservableCollection();
@@ -47,6 +67,11 @@ namespace DebtBuddy.Forms.ViewModels
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+            if(propertyName == "SelectedItem" && !(_selectedItem == null))
+            {
+                ShowAccountDetailViewModel.Execute(null);
+            }
         }
     }
 }

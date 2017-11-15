@@ -7,7 +7,12 @@
         <ResourceDictionary>
             <local:DoubleToBalanceConverter x:Key="doubleToBalanceConverter" />
             <local:DoubleToInterestRateConverter x:Key="doubleToInterestRateConverter" />
-		    <!-- Application resource dictionary -->
+
+            <Color x:Key="backgroundColor">#BEBEBE</Color>
+
+            <Style x:Key="backgroundStyle" TargetType="VisualElement">
+                <Setter Property="BackgroundColor" Value="{DynamicResource backgroundColor}" />
+            </Style>
         </ResourceDictionary>
 	</Application.Resources>
 </Application>

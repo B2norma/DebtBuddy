@@ -1,13 +1,19 @@
 ﻿using DebtBuddy.Forms.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace DebtBuddy.Forms.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CreateAccountPage : ContentPage
+    public partial class AccountDetailPage : ContentPage
     {
-        public CreateAccountPage(CreateAccountViewModel viewModel)
+        public AccountDetailPage(AccountDetailViewModel viewModel)
         {
             InitializeComponent();
             BindingContext = viewModel;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DebtBuddy.Forms.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,7 @@ namespace DebtBuddy.Forms.Interfaces.Services
         Task PopAsync();
 
         Task NavigateToCreateAccount();
+
+        Task NavigateToAccountDetail(Account account);
     }
 }

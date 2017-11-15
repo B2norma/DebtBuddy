@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DebtBuddy.Forms.Views.CreateAccountPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Style="{DynamicResource backgroundStyle}">
             <Entry Placeholder="Account Name" Text="{Binding Name, Mode=OneWayToSource}" />
             <Entry Placeholder="Balance" Text="{Binding Balance, Mode=OneWayToSource}" />
             <Entry Placeholder="Interest Rate" Text="{Binding InterestRate, Mode=OneWayToSource}" />

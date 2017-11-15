@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DebtBuddy.Forms.Views.AccountDetailPage">
+    <ContentPage.Content>
+        <StackLayout Style="{DynamicResource backgroundStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Name:" FontSize="Medium" Grid.Row="0" Grid.Column="0" />
+                <Entry Text="{Binding Account.Name, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" />
+                <Button Text="Save" Command="{Binding SaveChanges}" Grid.Row="0" Grid.Column="2" />
+                <Label Text="Interest Rate:" FontSize="Medium" Grid.Row="1" Grid.Column="0" />
+                <Entry Text="{Binding Account.InterestRate, Mode=TwoWay, Converter={StaticResource doubleToInterestRateConverter}}" Grid.Row="1" Grid.Column="1" />
+                <Button Text="Save" Command="{Binding SaveChanges}" Grid.Row="1" Grid.Column="2" />
+                <Label Text="{Binding Account.Balance, Converter={StaticResource doubleToBalanceConverter}}" FontSize="Medium" HorizontalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" />
+                <Entry Placeholder="Payment/Purchase Amount" Text="{Binding Amount, Mode=OneWayToSource}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" />
+                <Button Text="Payment" Command="{Binding ProcessAccountPaymentThenShowAccountsViewModel}" Grid.Row="4" Grid.Column="0" />
+                <Button Text="Purchase" Command="{Binding ProcessAccountPurchaseThenShowAccountsViewModel}" Grid.Row="4" Grid.Column="2" />
+            </Grid>
+            <Button Text="Delete" Command="{Binding DeleteAccountThenShowAccountsViewModel}" VerticalOptions="EndAndExpand" HorizontalOptions="End" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

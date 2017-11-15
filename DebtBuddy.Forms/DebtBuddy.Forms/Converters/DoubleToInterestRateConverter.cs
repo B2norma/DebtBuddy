@@ -17,7 +17,14 @@ namespace DebtBuddy.Forms.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return string.Format("{0:0.00}", ((string)value).Trim().Replace("%", ""));
+            }
+            catch
+            {
+                return 00.00;
+            }
         }
     }
 }
